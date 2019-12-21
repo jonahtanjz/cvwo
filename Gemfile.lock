@@ -88,6 +88,10 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
+    jsonapi-resources (0.10.2)
+      activerecord (>= 4.1)
+      concurrent-ruby
+      railties (>= 4.1)
     loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -206,6 +210,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   jbuilder (~> 2.7)
+  jsonapi-resources
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
   react-rails (~> 2.6)
