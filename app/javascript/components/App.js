@@ -3,6 +3,7 @@ import { Router } from "@reach/router";
 import TodoList from "./TodoList";
 import AddTask from "./AddTask";
 import DeleteTask from "./DeleteTask";
+import DoneTask from "./DoneTask";
 
 
 
@@ -12,6 +13,7 @@ function App() {
       <TodoList path="/" />
       <AddTask path="/add" />
       <DeleteTask path="/delete/:id" />
+      <DoneTask path="/done/:id" />
 
     </Router>
   );

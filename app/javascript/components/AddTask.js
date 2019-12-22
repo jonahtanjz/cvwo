@@ -33,7 +33,8 @@ function AddTask() {
         initialValues={{
           type: "todos",
           attributes: {
-            body: ""
+            body: "",
+            status: "not_done"
           }
         }}
         onSubmit={handleSubmit}

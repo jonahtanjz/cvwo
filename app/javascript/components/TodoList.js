@@ -15,7 +15,14 @@ function TodoList() {
 
   const gotoAddTask = () => navigate('/add');
   const gotoDelete = id => navigate('/delete/' + id);
-  let todoData = todo.map(task => <div>{task.attributes.body}<button onClick={() => gotoDelete(task.id)}>Delete</button></div>);
+  const gotoDone = id => navigate('/done/' + id);
+
+  let todoData = todo.map(task => 
+                            <div>
+                              <span class={task.attributes.status}>{task.attributes.body}</span>
+                              <button onClick={() => gotoDone(task.id)}>Done</button>
+                              <button onClick={() => gotoDelete(task.id)}>Delete</button>
+                            </div>);
 
   return (
     <div>

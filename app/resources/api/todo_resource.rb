@@ -1,3 +1,3 @@
 class Api::TodoResource < JSONAPI::Resource
-    attributes :body
+    attributes :body, :status
   end
