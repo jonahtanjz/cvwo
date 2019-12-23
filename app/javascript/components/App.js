@@ -4,6 +4,7 @@ import TodoList from "./TodoList";
 import AddTask from "./AddTask";
 import DeleteTask from "./DeleteTask";
 import DoneTask from "./DoneTask";
+import EditTask from "./EditTask";
 
 
 
@@ -14,6 +15,7 @@ function App() {
       <AddTask path="/add" />
       <DeleteTask path="/delete/:id" />
       <DoneTask path="/done/:id" />
+      <EditTask path="/edit/:id" />
 
     </Router>
   );
