@@ -9,7 +9,8 @@ function DeleteTask() {
       // as a header in the request to create a new post.
       // This is needed because with this token, Rails is going to
       // recognize the request as a valid request
-      const taskId = window.location.pathname.slice(7);
+      const taskId = window.location.pathname.slice(8);
+      console.log(taskId);
       const csrfToken = document.querySelector("meta[name=csrf-token]").content;
 
       fetch("/api/todo/" + taskId, {

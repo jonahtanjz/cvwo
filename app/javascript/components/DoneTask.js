@@ -9,28 +9,31 @@ function DoneTask() {
       // as a header in the request to create a new post.
       // This is needed because with this token, Rails is going to
       // recognize the request as a valid request
-      const taskId = window.location.pathname.slice(5);
-      
+      const taskId = window.location.pathname.slice(6);
+      console.log(taskId);
       const csrfToken = document.querySelector("meta[name=csrf-token]").content;
 
-      fetch("/api/todo/" + taskId, {
+      const response = await fetch("/api/todo/" + taskId, {
         method: "PATCH",
         credentials: "include",
         headers: {
           "Content-Type": "application/vnd.api+json",
-          "X-CSRF-Token": csrfToken
+          "X-CSRF-Token": csrfToken,
         },
-        body: JSON.stringify({ attributes: {status: "done"}})
+        body: JSON.stringify({
+          data: {id: taskId, type: "todos", attributes: {status: "done"}}
+        })
       });
       
-
-      return navigate('/');
-
+      if (response.status === 200) {
+        navigate("/");
+      }
     };
     requestTasks();
   };
 
   handleSubmit();
+  return <div>Completed</div>;
 }
 
 export default DoneTask;
