@@ -34,13 +34,15 @@ function AddTask() {
           type: "todos",
           attributes: {
             body: "",
-            status: "not_done"
+            status: "not-done",
+            tag: ""
           }
         }}
         onSubmit={handleSubmit}
         render={() => (
           <Form>
-            <Field type="text" name="attributes.body" />
+            <Field type="text" name="attributes.body" placeholder="Description" />
+            <Field type="text" name="attributes.tag" placeholder="Tag" />
 
             <button type="submit">Add</button>
           </Form>
