@@ -20,7 +20,7 @@ function AddTask() {
         body: JSON.stringify({ data: values })
       });
       if (response.status === 201) {
-        navigate("/");
+        window.history.back();
       }
     };
     requestTasks();

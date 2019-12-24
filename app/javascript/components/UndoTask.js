@@ -26,7 +26,7 @@ function UndoTask() {
       });
       
       if (response.status === 200) {
-        navigate("/");
+        window.history.back();
       }
     };
     requestTasks();

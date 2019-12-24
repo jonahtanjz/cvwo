@@ -4,7 +4,8 @@ import './main.css'
 
 function TodoList() {
   let [todo, setTodo] = useState([]);
-
+  let tags = [];
+  let selectedTag = decodeURI(window.location.pathname.slice(1));
   useEffect(() => {
     const requestTodo = async () => {
       const response = await fetch("/api/todo");
@@ -13,8 +14,6 @@ function TodoList() {
     };
     requestTodo();
   }, []);
-
-  let tags = [];
 
   function getTags() {
     todo.forEach(tag => {
@@ -32,9 +31,8 @@ function TodoList() {
   }
 
   function filterTag() {
-    if (window.location.pathname != "/")
+    if (selectedTag != "")
     {
-      let selectedTag = decodeURI(window.location.pathname.slice(1));
       todo = todo.filter(item => item.attributes.tag == selectedTag);
     }
   }
@@ -67,7 +65,7 @@ function TodoList() {
     <div>
         <button onClick={gotoAddTask}>Add new task</button>
         <br />
-        <select onChange={gotoTag}>
+        <select onChange={gotoTag} value={selectedTag}>
           <option value="">View All</option>
           {categories}
         </select>

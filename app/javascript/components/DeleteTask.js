@@ -23,7 +23,7 @@ function DeleteTask() {
       });
       
 
-      navigate('/');
+      window.history.back();
 
     };
     requestTasks();
@@ -40,7 +40,7 @@ function DeleteTask() {
         render={() => (
           <Form>
             <button type="submit">YES</button>
-        <button type="button" onClick={() => navigate('/')}>NO</button>
+        <button type="button" onClick={() => window.history.back()}>NO</button>
           </Form>
         )}
       />

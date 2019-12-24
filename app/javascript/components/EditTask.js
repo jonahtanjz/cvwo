@@ -32,7 +32,7 @@ function EditTask() {
          })
       });
       if (response.status === 200) {
-        navigate("/");
+        window.history.back();
       }
     };
     requestTasks();
@@ -51,7 +51,7 @@ function EditTask() {
             <Field type="text" name="body" placeholder={taskBody} />
 
             <button type="submit">Change</button>
-            <button type="button" onClick={() => navigate('/')}>Go back</button>
+            <button type="button" onClick={() => window.history.back()}>Go back</button>
           </Form>
         )}
       />
