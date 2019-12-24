@@ -13,6 +13,7 @@ function App() {
   return (
     <Router>
       <TodoList path="/" />
+      <TodoList path="/:tag" />
       <AddTask path="/add" />
       <DeleteTask path="/delete/:id" />
       <DoneTask path="/done/:id" />

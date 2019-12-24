@@ -3,7 +3,7 @@ import { navigate } from "@reach/router";
 import './main.css'
 
 function TodoList() {
-  const [todo, setTodo] = useState([]);
+  let [todo, setTodo] = useState([]);
 
   useEffect(() => {
     const requestTodo = async () => {
@@ -26,6 +26,21 @@ function TodoList() {
 
   getTags();
 
+  function gotoTag(event) {
+      let url = encodeURI(event.target.value);
+      navigate("/" + url);
+  }
+
+  function filterTag() {
+    if (window.location.pathname != "/")
+    {
+      let selectedTag = decodeURI(window.location.pathname.slice(1));
+      todo = todo.filter(item => item.attributes.tag == selectedTag);
+    }
+  }
+
+  filterTag();
+
   const gotoAddTask = () => navigate('/add');
   const gotoDelete = id => navigate('/delete/' + id);
   const gotoDone = id => navigate('/done/' + id);
@@ -33,7 +48,7 @@ function TodoList() {
   const gotoEdit = id => navigate('/edit/' + id);
 
   let categories = tags.map(item => 
-                              <option>
+                              <option value={item}>
                                 {item}
                               </option>);
 
@@ -52,7 +67,8 @@ function TodoList() {
     <div>
         <button onClick={gotoAddTask}>Add new task</button>
         <br />
-        <select>
+        <select onChange={gotoTag}>
+          <option value="">View All</option>
           {categories}
         </select>
         {todoData}
