@@ -10,7 +10,6 @@ function DeleteTask() {
       // This is needed because with this token, Rails is going to
       // recognize the request as a valid request
       const taskId = window.location.pathname.slice(8);
-      console.log(taskId);
       const csrfToken = document.querySelector("meta[name=csrf-token]").content;
 
       fetch("/api/todo/" + taskId, {
@@ -22,7 +21,6 @@ function DeleteTask() {
         }
       });
       
-
       window.history.back();
 
     };
@@ -37,13 +35,14 @@ function DeleteTask() {
           type: "todos"
         }}
         onSubmit={handleSubmit}
-        render={() => (
-          <Form>
+      >
+      {(props) => (
+          <form onSubmit={props.handleSubmit}>
             <button type="submit">YES</button>
-        <button type="button" onClick={() => window.history.back()}>NO</button>
-          </Form>
-        )}
-      />
+            <button type="button" onClick={() => window.history.back()}>NO</button>
+          </form>
+      )}
+      </Formik>
     </div>
   );
 }

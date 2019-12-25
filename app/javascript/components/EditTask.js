@@ -17,9 +17,12 @@ function EditTask() {
       // recognize the request as a valid request
       const csrfToken = document.querySelector("meta[name=csrf-token]").content;
       
-      if (attributes.body == "") {
+      if (attributes.body == "" && attributes.tag == "") {
         attributes.body = taskBody;
-      } else if(attributes.tag == "") {
+        attributes.tag = taskTag;
+      } else if (attributes.body == "") {
+        attributes.body = taskBody;
+      } else if (attributes.tag == "") {
         attributes.tag = taskTag;
       }
 
@@ -57,16 +60,24 @@ function EditTask() {
               tag: ""
           }}
           onSubmit={handleSubmit}
-          render={() => (
-            <Form>
-              <Field type="text" name="body" placeholder={taskBody} />
-              <Field type="text" name="tag" placeholder={taskTag} />
+          >
+          {(props) => (
+            <form onSubmit={props.handleSubmit}>
 
-              <button type="submit">Change</button>
-              <button type="button" onClick={() => window.history.back()}>Go back</button>
-            </Form>
+            <p>*Leave blank to keep current value</p>
+            <label>Description:</label>
+            <input type="text" name="body" onChange={props.handleChange} placeholder={taskBody} />
+            <br />
+            <label>Tag:</label>
+            <input type="text" name="tag" onChange={props.handleChange} placeholder={taskTag} />
+            <br />
+            <button type="submit">Change</button>
+            <button type="button" onClick={() => window.history.back()}>Go back</button>
+
+            {props.errors.name && <div id="feedback">{props.errors.name}</div>}
+          </form>
           )}
-        />
+        </Formik>
       </div>
     );
 

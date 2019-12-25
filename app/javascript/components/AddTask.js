@@ -30,24 +30,31 @@ function AddTask() {
     <div>
       <h2>Add your task</h2>
       <Formik
-        initialValues={{
-          type: "todos",
-          attributes: {
-            body: "",
-            status: "not-done",
-            tag: ""
-          }
-        }}
-        onSubmit={handleSubmit}
-        render={() => (
-          <Form>
-            <Field type="text" name="attributes.body" placeholder="Description" />
-            <Field type="text" name="attributes.tag" placeholder="Tag" />
-
+          initialValues={{
+            type: "todos",
+            attributes: {
+              body: "",
+              status: "not-done",
+              tag: ""
+            }
+          }}
+          onSubmit={handleSubmit}
+          >
+          {(props) => (
+            <form onSubmit={props.handleSubmit}>
+            <label>Description:</label>
+            <input type="text" name="attributes.body" onChange={props.handleChange} />
+            <br />
+            <label>Tag:</label>
+            <input type="text" name="attributes.tag" onChange={props.handleChange} />
+            <br />
             <button type="submit">Add</button>
-          </Form>
-        )}
-      />
+            <button type="button" onClick={() => window.history.back()}>Go back</button>
+
+            {props.errors.name && <div id="feedback">{props.errors.name}</div>}
+          </form>
+          )}
+    </Formik>
     </div>
   );
 }
