@@ -1,24 +1,10 @@
 # README
+CVWO Winter Assignment 2019
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Name: JONAH TAN JUN ZI
 
-Things you may want to cover:
+Matriculation No: A0199579X
 
-* Ruby version
+Writeup & screenshot: https://github.com/jonahtanjz/cvwo/tree/master/mid-assignment
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Live app: http://34.94.62.224/
