@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import { navigate } from "@reach/router";
 import { Formik, Field, Form } from "formik";
 
 function EditTask() {
-
+  let [taskBody, setTaskBody] = useState([]);
+  let [taskTag, setTaskTag] = useState([]);
   const taskId = window.location.pathname.slice(6);
   
-  let taskBody = "";
-  let taskTag = "";
+  useEffect(() => {
+    const requestTask = async () => {
+      const response = await fetch("/api/todo/" + taskId);
+      const { data } = await response.json();
+      setTaskBody(data.attributes.body);
+      setTaskTag(data.attributes.tag);
+    };
+    requestTask();
+  }, []);
 
   const handleSubmit = attributes => {
     const requestTasks = async () => {
@@ -44,12 +52,12 @@ function EditTask() {
     requestTasks();
   };
 
-  fetch('/api/todo/' + taskId)
+  /*fetch('/api/todo/' + taskId)
       .then(response => response.json())
       .then(data => {
         taskBody = data.data.attributes.body;
         taskTag = data.data.attributes.tag;      
-      });
+      });*/
 
     return ( 
       <div>
