@@ -52,13 +52,6 @@ function EditTask() {
     requestTasks();
   };
 
-  /*fetch('/api/todo/' + taskId)
-      .then(response => response.json())
-      .then(data => {
-        taskBody = data.data.attributes.body;
-        taskTag = data.data.attributes.tag;      
-      });*/
-
     return ( 
       <div>
         <h2>Edit task</h2>
