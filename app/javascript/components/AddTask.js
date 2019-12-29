@@ -1,6 +1,7 @@
 import React from "react";
 import { navigate } from "@reach/router";
 import { Formik, Field, Form } from "formik";
+import './main.css';
 
 function AddTask() {
   const handleSubmit = values => {
@@ -27,8 +28,10 @@ function AddTask() {
   };
 
   return (
-    <div>
-      <h2>Add your task</h2>
+    <div class="new-task-form-container">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <h2 class="new-task-header">Add your task</h2>
       <Formik
           initialValues={{
             type: "todos",
@@ -43,14 +46,15 @@ function AddTask() {
           {(props) => (
             <form onSubmit={props.handleSubmit}>
             <label>Description:</label>
-            <input type="text" name="attributes.body" onChange={props.handleChange} />
+            <input class="form-control" type="text" name="attributes.body" onChange={props.handleChange} />
             <br />
             <label>Tag:</label>
-            <input type="text" name="attributes.tag" onChange={props.handleChange} />
+            <input class="form-control" type="text" name="attributes.tag" onChange={props.handleChange} />
             <br />
-            <button type="submit">Add</button>
-            <button type="button" onClick={() => window.history.back()}>Go back</button>
-
+            <div class="new-task-form-button">
+              <button class="btn btn-outline-primary" type="submit">Add</button>
+              <button class="btn btn-outline-secondary" type="button" onClick={() => window.history.back()}>Go back</button>
+            </div>
             {props.errors.name && <div id="feedback">{props.errors.name}</div>}
           </form>
           )}

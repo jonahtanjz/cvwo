@@ -1,11 +1,12 @@
 import React, { useEffect, useState} from "react";
 import { navigate } from "@reach/router";
 import { Formik, Field, Form } from "formik";
+import './main.css';
 
-function EditTask() {
+function EditTask(props) {
   let [taskBody, setTaskBody] = useState([]);
   let [taskTag, setTaskTag] = useState([]);
-  const taskId = window.location.pathname.slice(6);
+  const taskId = props.id;
   
   useEffect(() => {
     const requestTask = async () => {
@@ -53,8 +54,10 @@ function EditTask() {
   };
 
     return ( 
-      <div>
-        <h2>Edit task</h2>
+      <div class="edit-task-container">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <h2 class="edit-task-header">Edit task</h2>
         <Formik
           initialValues={{
               body: "",
@@ -67,14 +70,15 @@ function EditTask() {
 
             <p>*Leave blank to keep current value</p>
             <label>Description:</label>
-            <input type="text" name="body" onChange={props.handleChange} placeholder={taskBody} />
+            <input class="form-control" type="text" name="body" onChange={props.handleChange} placeholder={taskBody} />
             <br />
             <label>Tag:</label>
-            <input type="text" name="tag" onChange={props.handleChange} placeholder={taskTag} />
+            <input class="form-control" type="text" name="tag" onChange={props.handleChange} placeholder={taskTag} />
             <br />
-            <button type="submit">Change</button>
-            <button type="button" onClick={() => window.history.back()}>Go back</button>
-
+            <div class="edit-task-button">
+              <button class="btn btn-outline-primary" type="submit">Change</button>
+              <button class="btn btn-outline-secondary" type="button" onClick={() => window.history.back()}>Go back</button>
+            </div>
             {props.errors.name && <div id="feedback">{props.errors.name}</div>}
           </form>
           )}

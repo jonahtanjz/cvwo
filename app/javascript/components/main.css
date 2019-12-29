@@ -1,3 +1,58 @@
+body {
+  font-size: 18px !important;
+  margin: 20px !important;
+}
+
 .done {
     text-decoration: line-through;
   }
+
+.task-container {
+  width: 75%;
+  margin: 1em;
+  padding: 1em;
+  text-align: center;
+}  
+
+.task-buttons {
+  float: right;
+}
+
+.new-task-container {
+  text-align: center;
+}
+
+.selector-container {
+  text-align: center;
+}
+
+.selector-container select{
+  width: 20%;
+  margin: 1em;
+} 
+
+.new-task-form-container, 
+.edit-task-container, 
+.delete-task-container{
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.new-task-form-button, 
+.edit-task-button,
+.delete-task-button{
+  text-align: center;
+}
+
+.new-task-form-button button, 
+.edit-task-button button,
+.delete-task-button button {
+  margin: 0 1em;
+}
+
+.new-task-header, 
+.edit-task-header,
+.delete-task-header{
+  text-align: center;
+}
