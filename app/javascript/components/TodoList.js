@@ -5,7 +5,7 @@ import './main.css'
 function TodoList(props) {
   let [todo, setTodo] = useState([]);
   let tags = [];
-  let selectedTag = decodeURI(props.tag);
+  let selectedTag = decodeURIComponent(props.tag);
   useEffect(() => {
     const requestTodo = async () => {
       const response = await fetch("/api/todo");
@@ -26,7 +26,7 @@ function TodoList(props) {
   getTags();
 
   function gotoTag(event) {
-      let url = encodeURI(event.target.value);
+      let url = encodeURIComponent(event.target.value);
       navigate("/" + url);
   }
 
