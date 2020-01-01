@@ -5,7 +5,11 @@ body {
 
 .done {
     text-decoration: line-through;
-  }
+}
+
+.status-display {
+  display: none;
+}
 
 .task-container {
   width: 75%;

@@ -1,6 +1,7 @@
 import React from "react";
 import { navigate } from "@reach/router";
 import { Formik, Field, Form } from "formik";
+import './main.css';
 
 function UndoTask(props) {
   const handleSubmit = () => {
@@ -33,7 +34,7 @@ function UndoTask(props) {
   };
 
   handleSubmit();
-  return <div>Undone</div>;
+  return <div class="status-display">Undone</div>;
 }
 
 export default UndoTask;

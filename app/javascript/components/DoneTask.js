@@ -34,7 +34,7 @@ function DoneTask(props) {
   };
 
   handleSubmit();
-  return <div>Completed</div>;
+  return <div class="status-display">Completed</div>;
 }
 
 export default DoneTask;
