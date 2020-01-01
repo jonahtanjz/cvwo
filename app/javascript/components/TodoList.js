@@ -6,6 +6,7 @@ function TodoList(props) {
   let [todo, setTodo] = useState([]);
   let tags = [];
   let selectedTag = decodeURIComponent(props.tag);
+  
   useEffect(() => {
     const requestTodo = async () => {
       const response = await fetch("/api/todo");
@@ -21,6 +22,10 @@ function TodoList(props) {
         tags.push(tag.attributes.tag);
       }
     });
+
+    if ((selectedTag != "undefined") && (tags.indexOf(selectedTag) == -1) && (tags.length != 0)) {
+      navigate('/');
+    }
   }
 
   getTags();
@@ -38,6 +43,7 @@ function TodoList(props) {
   }
 
   filterTag();
+
   const gotoAddTask = () => navigate('/add');
   const gotoDelete = id => navigate('/delete/' + id);
   const gotoDone = id => navigate('/done/' + id);
