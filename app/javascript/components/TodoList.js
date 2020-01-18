@@ -1,5 +1,5 @@
 /*
-This page is homepage of the to-do list.
+This page is the homepage of the to-do list.
 */
 
 import React, { useEffect, useState } from "react";
@@ -32,8 +32,8 @@ function TodoList(props) {
     });
 
     // If user visit a URL with a tag that
-    // does not exists, they will be redirected 
-    // to the View All tag.
+    // does not exist, they will be redirected 
+    // to the default View All tag.
     if ((selectedTag != "undefined") && (tags.indexOf(selectedTag) == -1) && (tags.length != 0)) {
       navigate('/');
     }
@@ -49,8 +49,8 @@ function TodoList(props) {
       navigate("/" + url);
   }
 
-  // Filter the todo state and only keep tasks
-  // that matches the Tag selected
+  // Filter the todo state and only keep the tasks
+  // that matches the Tag selected in the URL parameter
   function filterTag() {
     if (selectedTag != "undefined")
     {
@@ -61,7 +61,7 @@ function TodoList(props) {
   // Call the filterTag function
   filterTag();
 
-  // Navigate to the respective pages when a button is clicked
+  // Navigate to the respective pages when the button is clicked
   const gotoAddTask = () => navigate('/add');
   const gotoDelete = id => navigate('/delete/' + id);
   const gotoDone = id => navigate('/done/' + id);
