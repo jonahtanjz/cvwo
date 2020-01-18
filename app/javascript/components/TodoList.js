@@ -1,3 +1,7 @@
+/*
+This page is homepage of the to-do list.
+*/
+
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import './main.css'
@@ -7,6 +11,7 @@ function TodoList(props) {
   let tags = [];
   let selectedTag = decodeURIComponent(props.tag);
   
+  // Get all the tasks and set the todo state to it
   useEffect(() => {
     const requestTodo = async () => {
       const response = await fetch("/api/todo");
@@ -16,6 +21,9 @@ function TodoList(props) {
     requestTodo();
   }, []);
 
+  // Get all the different tags of the tasks and
+  // put it in the tags array. This function also
+  // ensures there are no duplicates in the array
   function getTags() {
     todo.forEach(tag => {
       if (tags.indexOf(tag.attributes.tag) == -1) {
@@ -23,18 +31,26 @@ function TodoList(props) {
       }
     });
 
+    // If user visit a URL with a tag that
+    // does not exists, they will be redirected 
+    // to the View All tag.
     if ((selectedTag != "undefined") && (tags.indexOf(selectedTag) == -1) && (tags.length != 0)) {
       navigate('/');
     }
   }
 
+  // Call the getTags function
   getTags();
 
+  // Get the selected Tag value and navigate
+  // to the URL with the Tag value as parameter.
   function gotoTag(event) {
       let url = encodeURIComponent(event.target.value);
       navigate("/" + url);
   }
 
+  // Filter the todo state and only keep tasks
+  // that matches the Tag selected
   function filterTag() {
     if (selectedTag != "undefined")
     {
@@ -42,19 +58,23 @@ function TodoList(props) {
     }
   }
 
+  // Call the filterTag function
   filterTag();
 
+  // Navigate to the respective pages when a button is clicked
   const gotoAddTask = () => navigate('/add');
   const gotoDelete = id => navigate('/delete/' + id);
   const gotoDone = id => navigate('/done/' + id);
   const gotoUndo = id => navigate('/undo/' + id);
   const gotoEdit = id => navigate('/edit/' + id);
 
+  // Put each individual tag in tags array into a HTML dropdown option
   let categories = tags.map(item => 
                               <option value={item}>
                                 {item}
                               </option>);
 
+  // Add HTML elements, buttons to each of the individual task 
   let todoData = todo.map(task => 
                             <div class="task-container">
                               <span class={task.attributes.status}>{task.attributes.body}</span>
