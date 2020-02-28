@@ -1,2 +1,2 @@
 # README
-A to-do list app with CRUD operations implemented with React on Rails
+A to-do list app with CRUD operations implemented in React on Rails
